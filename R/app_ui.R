@@ -8,143 +8,6 @@ toastOpts <- list(
   position = "bottomRight"
 )
 
-header = dashboardHeader(
-  title = dashboardBrand(
-    title = sprintf("bs4Dash v%s", as.character(utils::packageVersion("bs4Dash"))),
-    color = "primary",
-    href = "1",
-    opacity = 0.8
-  ),
-  fixed = TRUE,
-  tooltip(
-    title = "This toggles the right sidebar",
-    placement = "bottom",
-    actionButton(inputId = "controlbarToggle", label = "Toggle Controlbar", class = "mx-2")
-  ),
-  popover(
-    title = "Toggle button",
-    content = "This toggle the left sidebar",
-    placement = "bottom",
-    actionButton(inputId = "sidebarToggle", label = "Toggle left sidebar", class = "mx-2")
-  ),
-  rightUi = tagList(
-    dropdownMenu(
-      badgeStatus = "danger",
-      type = "messages",
-      messageItem(
-        inputId = "triggerAction1",
-        message = "message 1",
-        from = "Divad Nojnarg",
-        image = "https://adminlte.io/themes/v3/dist/img/user3-128x128.jpg",
-        time = "today",
-        color = "lime"
-      )
-    ),
-    userOutput("user")
-  ),
-  leftUi = tagList(
-    dropdownMenu(
-      badgeStatus = "info",
-      type = "notifications",
-      notificationItem(
-        inputId = "triggerAction2",
-        text = "Error!",
-        status = "danger"
-      )
-    ),
-    dropdownMenu(
-      badgeStatus = "info",
-      type = "tasks",
-      taskItem(
-        inputId = "triggerAction3",
-        text = "My progress",
-        color = "orange",
-        value = 10
-      )
-    )
-  )
-)
-
-sidebar = dashboardSidebar(
-  fixed = TRUE,
-  skin = "light",
-  status = "primary",
-  id = "sidebar",
-  customArea = fluidRow(
-    actionButton(
-      inputId = "myAppButton",
-      label = NULL,
-      icon = icon("users"),
-      width = NULL,
-      status = "primary",
-      style = "margin: auto",
-      dashboardBadge(textOutput("btnVal"), color = "danger")
-    )
-  ),
-  sidebarUserPanel(
-    image = "https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png",
-    name = "Welcome Onboard!"
-  ),
-  sidebarMenu(
-    id = "current_tab",
-    flat = FALSE,
-    compact = FALSE,
-    childIndent = TRUE,
-    sidebarHeader("sidebar01_"),
-    menuItem(
-      text = "Galleries",
-      icon = icon("cubes"),
-      startExpanded = FALSE,
-      menuSubItem(text = HTML(paste("Gallery 01_01",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_01", icon = icon("circle"))
-      , menuSubItem(text = HTML(paste("Gallery 01_02",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_02", icon = icon("circle"))
-
-
-    )
-    ,
-    sidebarHeader("sidebar02_")
-    ,menuItem(
-      text = "Galleries",
-      icon = icon("cubes"),
-      startExpanded = FALSE,
-      menuSubItem(text = HTML(paste("Gallery 02_01",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_02_01", icon = icon("users")),
-      menuSubItem(text = HTML(paste("Gallery 02_02",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_02_02", icon = icon("users"))
-
-
-    )
-  )
-)
-
-body = dashboardBody(
-
-
-
- # tabItems(
-
-    # "mI_01_01","mI_01_02","mI_02_01","mI_02_02"
-
-    ###  tab 1
-
-    # tabItem(tabName = "mI_01_01", mod_module_01_01_ui("module_01_01"))
-    # ,tabItem(tabName = "mI_01_02", mod_module_01_02_ui("module_01_02"))
-    #
-    #
-    # ###  tab 2
-    #
-    # , tabItem(tabName = "mI_02_01", mod_module_02_01_ui("module_02_01"))
-    # , tabItem(tabName = "mI_02_02", mod_module_02_02_ui("module_02_02"))
-    #
-
-
-
-
-    ## END tabItems
-  #)
-
-
-)
-
-
-
 #' The application User-Interface
 #'
 #' @param request Internal parameter for `{shiny}`.
@@ -217,9 +80,122 @@ app_ui <- function(request) {
       help = FALSE,
       fullscreen = TRUE,
       scrollToTop = TRUE,
-      header = header,
-      sidebar = sidebar,
-      body = body,
+      header = dashboardHeader(
+        title = dashboardBrand(
+          title = sprintf("bs4Dash v%s", as.character(utils::packageVersion("bs4Dash"))),
+          color = "primary",
+          href = "1",
+          opacity = 0.8
+        ),
+        fixed = TRUE,
+        tooltip(
+          title = "This toggles the right sidebar",
+          placement = "bottom",
+          actionButton(inputId = "controlbarToggle", label = "Toggle Controlbar", class = "mx-2")
+        ),
+        popover(
+          title = "Toggle button",
+          content = "This toggle the left sidebar",
+          placement = "bottom",
+          actionButton(inputId = "sidebarToggle", label = "Toggle left sidebar", class = "mx-2")
+        ),
+        rightUi = tagList(
+          dropdownMenu(
+            badgeStatus = "danger",
+            type = "messages",
+            messageItem(
+              inputId = "triggerAction1",
+              message = "message 1",
+              from = "Divad Nojnarg",
+              image = "https://adminlte.io/themes/v3/dist/img/user3-128x128.jpg",
+              time = "today",
+              color = "lime"
+            )
+          ),
+          userOutput("user")
+        ),
+        leftUi = tagList(
+          dropdownMenu(
+            badgeStatus = "info",
+            type = "notifications",
+            notificationItem(
+              inputId = "triggerAction2",
+              text = "Error!",
+              status = "danger"
+            )
+          ),
+          dropdownMenu(
+            badgeStatus = "info",
+            type = "tasks",
+            taskItem(
+              inputId = "triggerAction3",
+              text = "My progress",
+              color = "orange",
+              value = 10
+            )
+          )
+        )
+      ),
+      sidebar = dashboardSidebar(
+        fixed = TRUE,
+        skin = "light",
+        status = "primary",
+        id = "sidebar",
+        customArea = fluidRow(
+          actionButton(
+            inputId = "myAppButton",
+            label = NULL,
+            icon = icon("users"),
+            width = NULL,
+            status = "primary",
+            style = "margin: auto",
+            dashboardBadge(textOutput("btnVal"), color = "danger")
+          )
+        ),
+        sidebarUserPanel(
+          image = "https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png",
+          name = "Welcome Onboard!"
+        ),
+        sidebarMenu(
+          id = "current_tab",
+          flat = FALSE,
+          compact = FALSE,
+          childIndent = TRUE,
+          sidebarHeader("sidebar01_"),
+
+          menuItem(
+            text = "Galleries",
+            icon = icon("cubes"),
+            startExpanded = FALSE,
+            menuSubItem(text = HTML(paste("Gallery 01_01",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_01", icon = icon("circle"))
+            , menuSubItem(text = HTML(paste("Gallery 01_02",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_02", icon = icon("circle"))
+
+
+          )
+          ,
+          sidebarHeader("sidebar02_")
+          ,menuItem(
+            text = "Galleries",
+            icon = icon("cubes"),
+            startExpanded = FALSE,
+            menuSubItem(text = HTML(paste("Gallery 02_01",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_02_01", icon = icon("users")),
+            menuSubItem(text = HTML(paste("Gallery 02_02",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_02_02", icon = icon("users"))
+
+
+          )
+        )
+      ),
+      body =  dashboardBody(
+        ## END tabItems
+        tabItems(
+          tabItem(tabName = "mI_01_01", mod_module_01_01_ui("module_01_01"))
+          ,tabItem(tabName = "mI_01_02", mod_module_01_02_ui("module_01_02"))
+
+          ###  tab 2
+          , tabItem(tabName = "mI_02_01", mod_module_02_01_ui("module_02_01"))
+          , tabItem(tabName = "mI_02_02", mod_module_02_02_ui("module_02_02"))
+          )
+        ),
       controlbar = dashboardControlbar(
         id = "controlbar",
         skin = "light",
