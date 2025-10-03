@@ -116,25 +116,29 @@ sidebar = dashboardSidebar(
 
 body = dashboardBody(
 
-  # tabItems("mI_01_01","mI_01_02","mI_02_01","mI_02_02"
-  #
-  #   # ###  tab 1
-  #   #
-  #   # tabItem(tabName = "mI_01_01", mod_module_01_01_ui("module_01_01"))
-  #   # ,tabItem(tabName = "mI_01_02", mod_module_01_02_ui("module_01_02"))
-  #   #
-  #   #
-  #   # ###  tab 2
-  #   #
-  #   # , tabItem(tabName = "mI_02_01", mod_module_02_01_ui("module_02_01"))
-  #   # , tabItem(tabName = "mI_02_02", mod_module_02_02_ui("module_02_02"))
-  #   #
-  #
-  #
-  #
-  #
-  #   ## END tabItems
-  # )
+
+
+ # tabItems(
+
+    # "mI_01_01","mI_01_02","mI_02_01","mI_02_02"
+
+    ###  tab 1
+
+    # tabItem(tabName = "mI_01_01", mod_module_01_01_ui("module_01_01"))
+    # ,tabItem(tabName = "mI_01_02", mod_module_01_02_ui("module_01_02"))
+    #
+    #
+    # ###  tab 2
+    #
+    # , tabItem(tabName = "mI_02_01", mod_module_02_01_ui("module_02_01"))
+    # , tabItem(tabName = "mI_02_02", mod_module_02_02_ui("module_02_02"))
+    #
+
+
+
+
+    ## END tabItems
+  #)
 
 
 )
