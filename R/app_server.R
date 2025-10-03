@@ -18,19 +18,7 @@ app_server <- function(input, output, session) {
     )
   )
 
-  # Timeout
-  observeEvent(input$timeOut, {
-    print(paste0("Session (", session$token, ") timed out at: ", Sys.time()))
-    showModal(modalDialog(
-      title = "Timeout",
-      paste("Session timeout due to", input$timeOut, "inactivity -", Sys.time()),
-      footer = NULL
-    ))
-    session$close()
-  })
-
-
-
+  
   #messageModule = callModule(mod_msg_message_dropdownMenu_server, 'messageUI')
   # notificationModule = callModule(notificationServer, 'notificationUI')
   # messageModule = callModule(messageServer, 'messageUI')
