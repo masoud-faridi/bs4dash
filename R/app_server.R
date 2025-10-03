@@ -9,6 +9,7 @@ app_server <- function(input, output, session) {
   # Your application server logic
 
   res_auth <- secure_server(
+    timeout = 30,
     check_credentials = check_credentials(
       db=app_sys("app/www/db/manager.sqlite"),
 
