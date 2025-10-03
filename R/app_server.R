@@ -53,11 +53,59 @@ app_server <- function(input, output, session) {
   # })
 
 
-  mod_module_01_01_server("module_01_01"
-                          # ,con_pool
-                          # other arguments to pass module
+  useAutoColor()
 
-                          )
+  output$btnVal <- renderText(input$myAppButton)
+  observeEvent(input$myAppButton, {
+    showModal(modalDialog("Thanks for clicking me!", easyClose = TRUE))
+  })
+
+  # user menu ---------------------------------------------------------------
+
+  output$user <- renderUser({
+    dashboardUser(
+      name = "Divad Nojnarg",
+      image = "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+      title = "shinydashboardPlus",
+      subtitle = "Author",
+      footer = p("The footer", class = "text-center"),
+      fluidRow(
+        dashboardUserItem(
+          width = 6,
+          "Item 1"
+        ),
+        dashboardUserItem(
+          width = 6,
+          "Item 2"
+        )
+      )
+    )
+  })
+
+
+  # mod_module_01_01_server("module_01_01"
+  #                         # ,con_pool
+  #                         # other arguments to pass module
+  #
+  #                         )
+
+  # mod_module_01_01_server("module_01_02"
+  #                         # ,con_pool
+  #                         # other arguments to pass module
+  #
+  # )
+  #
+  # mod_module_01_01_server("module_02_01"
+  #                         # ,con_pool
+  #                         # other arguments to pass module
+  #
+  # )
+  #
+  # mod_module_01_01_server("module_02_02"
+  #                         # ,con_pool
+  #                         # other arguments to pass module
+  #
+  # )
 
 
 }
