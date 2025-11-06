@@ -112,9 +112,6 @@ app_ui <- function(request) {
               color = "lime"
             )
           ),
-          userOutput("user")
-        ),
-        leftUi = tagList(
           dropdownMenu(
             badgeStatus = "info",
             type = "notifications",
@@ -133,7 +130,8 @@ app_ui <- function(request) {
               color = "orange",
               value = 10
             )
-          )
+          ),
+          userOutput("user")
         )
       ),
       sidebar = dashboardSidebar(
