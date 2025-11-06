@@ -18,7 +18,7 @@ app_server <- function(input, output, session) {
     )
   )
 
-  
+
   #messageModule = callModule(mod_msg_message_dropdownMenu_server, 'messageUI')
   # notificationModule = callModule(notificationServer, 'notificationUI')
   # messageModule = callModule(messageServer, 'messageUI')
@@ -71,30 +71,33 @@ app_server <- function(input, output, session) {
     )
   })
 
+  # Pass to other modules
+  messageModule = callModule(messageServer, 'messageUI')
 
-  # mod_module_01_01_server("module_01_01"
-  #                         # ,con_pool
-  #                         # other arguments to pass module
+  notificationModule = callModule(notificationServer, 'notificationUI')
   #
-  #                         )
+  # taskItemModule = callModule(taskItemServer, 'taskItemUI')
 
-  # mod_module_01_01_server("module_01_02"
-  #                         # ,con_pool
-  #                         # other arguments to pass module
-  #
-  # )
-  #
-  # mod_module_01_01_server("module_02_01"
-  #                         # ,con_pool
-  #                         # other arguments to pass module
-  #
-  # )
-  #
-  # mod_module_01_01_server("module_02_02"
-  #                         # ,con_pool
-  #                         # other arguments to pass module
-  #
-  # )
+
+
+  #########################################################
+  mod_module_00_00_server(
+    id = "module_00_00",
+    messageModule = messageModule,
+    notificationModule = notificationModule,
+    taskModule = taskModule
+  )
+
+  #########################################################
+
+  mod_module_01_01_server(
+    "module_01_01",
+    notificationModule = notificationModule,  # حالا به عنوان named arg پاس بده
+    messageModule = messageModule,
+    taskModule = taskModule
+  )
+
+
 
 
 }

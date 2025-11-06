@@ -17,7 +17,7 @@ mod_module_01_01_ui <- function(id) {
 #' module_01_01 Server Functions
 #'
 #' @noRd
-mod_module_01_01_server <- function(id){
+mod_module_01_01_server <- function(id, messageModule, notificationModule, taskModule){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
 

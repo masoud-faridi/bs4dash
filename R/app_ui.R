@@ -100,37 +100,9 @@ app_ui <- function(request) {
           actionButton(inputId = "sidebarToggle", label = "Toggle left sidebar", class = "mx-2")
         ),
         rightUi = tagList(
-          dropdownMenu(
-            badgeStatus = "danger",
-            type = "messages",
-            messageItem(
-              inputId = "triggerAction1",
-              message = "message 1",
-              from = "Divad Nojnarg",
-              image = "https://adminlte.io/themes/v3/dist/img/user3-128x128.jpg",
-              time = "today",
-              color = "lime"
-            )
-          ),
-          dropdownMenu(
-            badgeStatus = "info",
-            type = "notifications",
-            notificationItem(
-              inputId = "triggerAction2",
-              text = "Error!",
-              status = "danger"
-            )
-          ),
-          dropdownMenu(
-            badgeStatus = "info",
-            type = "tasks",
-            taskItem(
-              inputId = "triggerAction3",
-              text = "My progress",
-              color = "orange",
-              value = 10
-            )
-          ),
+          messageUI('messageUI'),
+          notificationUI('notificationUI'),
+          #taskItemUI('taskUI'),
           userOutput("user")
         )
       ),
@@ -165,6 +137,7 @@ app_ui <- function(request) {
             text = "Galleries",
             icon = icon("cubes"),
             startExpanded = FALSE,
+            menuSubItem(text = HTML(paste("test 00_00",dashboardBadge("",position = "right",color = "danger"))),tabName = "mI_00_00", icon = icon("circle")),
             menuSubItem(text = HTML(paste("Gallery 01_01",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_01", icon = icon("circle"))
             , menuSubItem(text = HTML(paste("Gallery 01_02",dashboardBadge("new",position = "right",color = "danger"))),tabName = "mI_01_02", icon = icon("circle"))
 
@@ -186,6 +159,7 @@ app_ui <- function(request) {
       body =  dashboardBody(
         ## END tabItems
         tabItems(
+          tabItem(tabName = "mI_00_00", mod_module_00_00_ui("module_00_00")),
           tabItem(tabName = "mI_01_01", mod_module_01_01_ui("module_01_01"))
           ,tabItem(tabName = "mI_01_02", mod_module_01_02_ui("module_01_02"))
 
