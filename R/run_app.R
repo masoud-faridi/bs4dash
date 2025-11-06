@@ -14,6 +14,12 @@ run_app <- function(
   uiPattern = "/",
   ...
 ) {
+
+
+  source(app_sys("app/www/R_CODE/global.R"))
+
+
+  ##################
   with_golem_options(
     app = shinyApp(
       ui = shinymanager::secure_app(app_ui,fab_position = "bottom-left",enable_admin = TRUE,
@@ -40,7 +46,7 @@ run_app <- function(
                                         )
                                       ),
                                       tags$img(
-                                        src = "www/images/logo.png", width = "100%", alt="Logo not found", deleteFile=FALSE
+                                        src = "www/images/logo.jpg", width = "30%", alt="Logo not found", deleteFile=FALSE
 
                                       ))
                                     ,background =
